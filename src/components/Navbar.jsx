@@ -6,7 +6,7 @@ import NavLink from './NavLink';
 const Navbar = () => {
    return (
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 p-5 bg-[#ffffff] font-medium">
-         <ul className="flex flex-wrap justify-center gap-4 order-2 md:order-1">
+         <ul className="flex flex-wrap justify-center gap-3 order-2 md:order-1">
             <li>
                <NavLink href="/">Home</NavLink>
             </li>
@@ -25,7 +25,7 @@ const Navbar = () => {
             <Image src="/assets/wanderlast.png" alt="Logo" width={130} height={60} />
          </div>
 
-         <ul className="flex flex-wrap justify-center gap-4 order-3">
+         <ul className="flex flex-wrap justify-center gap-3 order-3">
             <li className="flex items-center gap-1">
                <FaRegUser />
                User
