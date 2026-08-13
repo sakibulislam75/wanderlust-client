@@ -1,15 +1,24 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaRegUser } from 'react-icons/fa';
+import NavLink from './NavLink';
 
 const Navbar = () => {
    return (
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 p-5 bg-[#ffffff] font-medium">
          <ul className="flex flex-wrap justify-center gap-4 order-2 md:order-1">
-            <li>Home</li>
-            <li>Destinations</li>
-            <li>My Bookings</li>
-            <li>Admin</li>
+            <li>
+               <NavLink href="/">Home</NavLink>
+            </li>
+            <li>
+               <NavLink href="/destinations">Destinations</NavLink>
+            </li>
+            <li>
+               <NavLink href="/bookings">My Bookings</NavLink>
+            </li>
+            <li>
+               <NavLink href="/admin">Admin</NavLink>
+            </li>
          </ul>
 
          <div className="order-1 md:order-2">
@@ -21,8 +30,12 @@ const Navbar = () => {
                <FaRegUser />
                User
             </li>
-            <li>Login</li>
-            <li>Sign up</li>
+            <li>
+               <NavLink href="/login">Login</NavLink>
+            </li>
+            <li>
+               <NavLink href="/signup">Sign up</NavLink>
+            </li>
          </ul>
       </div>
    );
