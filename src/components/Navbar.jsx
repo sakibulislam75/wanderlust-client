@@ -6,7 +6,7 @@ import NavLink from './NavLink';
 const Navbar = () => {
    return (
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 p-5 bg-[#ffffff] font-medium">
-         <ul className="flex flex-wrap justify-center gap-3 order-2 md:order-1">
+         <ul className="flex flex-wrap justify-center gap-2 order-2 md:order-1">
             <li>
                <NavLink href="/">Home</NavLink>
             </li>
@@ -18,6 +18,9 @@ const Navbar = () => {
             </li>
             <li>
                <NavLink href="/admin">Admin</NavLink>
+            </li>
+            <li>
+               <NavLink href="/add-destination">Add Destination</NavLink>
             </li>
          </ul>
 
