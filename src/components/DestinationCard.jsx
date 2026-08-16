@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { MdLocationPin, MdOutlineArrowOutward } from 'react-icons/md';
 import { RiStarFill } from 'react-icons/ri';
@@ -5,7 +6,6 @@ import { RiStarFill } from 'react-icons/ri';
 const DestinationCard = ({ destination }) => {
    return (
       <div className="rounded-lg bg-white p-4 transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl">
-         {/* Image */}
          <div className="relative">
             <img
                src={destination.imageUrl}
@@ -18,7 +18,6 @@ const DestinationCard = ({ destination }) => {
             </span>
          </div>
 
-         {/* Content */}
          <div>
             <p className="text-sm flex items-center  text-gray-500 mt-2">
                <MdLocationPin /> {destination.country}
@@ -41,7 +40,9 @@ const DestinationCard = ({ destination }) => {
             </div>
 
             <button className="flex items-center pt-2  text-blue-500 text-sm font-semibold uppercase tracking-wide hover: transition-all duration-300 ease-in-out hover:translate-x-1">
-               Book Now <MdOutlineArrowOutward />
+               <Link href={`/destinations/${destination._id}`} className="flex items-center gap-1">
+                  Book Now <MdOutlineArrowOutward />
+               </Link>
             </button>
          </div>
       </div>

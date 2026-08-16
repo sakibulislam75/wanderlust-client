@@ -1,0 +1,163 @@
+import { SingleDestinationsData } from '@/lib/Data';
+import { Button } from '@heroui/react';
+import Link from 'next/link';
+import React from 'react';
+import { FaArrowLeft, FaCheck, FaEdit, FaMapMarkerAlt, FaStar, FaTrash } from 'react-icons/fa';
+
+const DestinationDetails = async ({ params }) => {
+   const { id } = await params;
+   const destination = await SingleDestinationsData(id);
+
+   const highlights = [
+      'Luxury accommodation',
+      'Local cultural experience',
+      'Professional tour guide',
+      'Beautiful sightseeing',
+      'Travel insurance included',
+      '24/7 customer support',
+   ];
+
+   return (
+      <div className="mx-auto my-6 w-10/12 max-w-7xl">
+         {/* Top Navigation */}
+
+         <div className="mb-5 flex items-center justify-between">
+            <Link
+               href="/destinations"
+               className="flex items-center gap-2 text-sm text-gray-500 transition hover:text-black"
+            >
+               <FaArrowLeft size={12} />
+               Back to Destinations
+            </Link>
+
+            <div className="flex items-center gap-2">
+               <Button
+                  variant="bordered"
+                  size="sm"
+                  startContent={<FaEdit size={10} />}
+                  className="rounded-none border-gray-300 px-4 text-xs text-gray-700"
+               >
+                  Edit
+               </Button>
+
+               <Button
+                  variant="bordered"
+                  size="sm"
+                  startContent={<FaTrash size={10} />}
+                  className="rounded-none border-red-300 px-4 text-xs text-red-500"
+               >
+                  Cancel
+               </Button>
+            </div>
+         </div>
+
+         {/* Hero Image */}
+
+         <div className="overflow-hidden rounded-2xl shadow-md">
+            <img
+               src={destination.imageUrl}
+               alt={destination.destinationName}
+               className="h-[250px] w-full object-cover transition duration-700 hover:scale-105 md:h-[450px]"
+            />
+         </div>
+
+         {/* Main Content */}
+
+         <div className="mt-8 grid gap-8 lg:grid-cols-[2fr_1fr]">
+            {/* Left Section */}
+
+            <div>
+               <div className="mb-6">
+                  <p className="mb-2 flex items-center gap-2 text-sm text-gray-500">
+                     <FaMapMarkerAlt size={12} />
+                     {destination.country}
+                  </p>
+
+                  <h1 className="text-4xl font-bold md:text-5xl">{destination.destinationName}</h1>
+
+                  <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                     <span className="flex items-center gap-1">
+                        <FaStar className="text-yellow-500" />
+                        4.9 (234 reviews)
+                     </span>
+
+                     <span>{destination.duration}</span>
+
+                     <span className="rounded-full bg-gray-100 px-3 py-1">
+                        {destination.category}
+                     </span>
+                  </div>
+               </div>
+
+               {/* Overview */}
+
+               <div className="mb-8">
+                  <h2 className="mb-3 text-2xl font-semibold">Overview</h2>
+
+                  <p className="leading-8 text-gray-600">
+                     {destination.description} Explore breathtaking landscapes, iconic attractions,
+                     and unforgettable travel experiences.
+                  </p>
+               </div>
+
+               {/* Highlights */}
+
+               <div>
+                  <h2 className="mb-4 text-2xl font-semibold">Highlights</h2>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                     {highlights.map((item) => (
+                        <div key={item} className="flex items-center gap-3 text-gray-600">
+                           <FaCheck className="shrink-0 text-green-500" size={12} />
+
+                           <span>{item}</span>
+                        </div>
+                     ))}
+                  </div>
+               </div>
+            </div>
+
+            {/* Booking Card */}
+
+            <div>
+               <div className="sticky top-6 rounded-2xl border bg-white p-6 shadow-lg">
+                  <p className="text-sm text-gray-500">Starting from</p>
+
+                  <h2 className="text-4xl font-bold text-cyan-500">${destination.price}</h2>
+
+                  <p className="mb-5 text-sm text-gray-500">per person</p>
+
+                  <input
+                     type="date"
+                     defaultValue={destination.departureDate}
+                     className="w-full rounded-lg border p-3 outline-none"
+                  />
+
+                  <Button color="primary" className="mt-4 w-full">
+                     Book Now →
+                  </Button>
+
+                  <div className="mt-6 space-y-3 border-t pt-5 text-sm text-gray-600">
+                     <p className="flex items-center gap-2">
+                        <FaCheck className="text-green-500" size={12} />
+                        Free cancellation up to 7 days
+                     </p>
+
+                     <p className="flex items-center gap-2">
+                        <FaCheck className="text-green-500" size={12} />
+                        Travel insurance included
+                     </p>
+
+                     <p className="flex items-center gap-2">
+                        <FaCheck className="text-green-500" size={12} />
+                        24/7 customer support
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   );
+};
+
+export default DestinationDetails;
