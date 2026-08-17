@@ -1,8 +1,11 @@
+import { EditModal } from '@/components/EditModal';
 import { SingleDestinationsData } from '@/lib/Data';
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
+import { BiSolidEdit } from 'react-icons/bi';
 import { FaArrowLeft, FaCheck, FaEdit, FaMapMarkerAlt, FaStar, FaTrash } from 'react-icons/fa';
+import { MdDeleteOutline } from 'react-icons/md';
 
 const DestinationDetails = async ({ params }) => {
    const { id } = await params;
@@ -30,22 +33,15 @@ const DestinationDetails = async ({ params }) => {
                Back to Destinations
             </Link>
 
-            <div className="flex items-center gap-2">
-               <Button
-                  variant="bordered"
-                  size="sm"
-                  startContent={<FaEdit size={10} />}
-                  className="rounded-none border-gray-300 px-4 text-xs text-gray-700"
-               >
-                  Edit
-               </Button>
+            <div className="flex flex-wrap md: items-center gap-2">
+               <EditModal destination={destination} />
 
                <Button
-                  variant="bordered"
+                  variant="outline"
                   size="sm"
-                  startContent={<FaTrash size={10} />}
-                  className="rounded-none border-red-300 px-4 text-xs text-red-500"
+                  className="rounded-none border-red-300 px-4 text-sm text-red-500"
                >
+                  <MdDeleteOutline />
                   Cancel
                </Button>
             </div>

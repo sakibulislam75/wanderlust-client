@@ -1,7 +1,10 @@
 import { Josefin_Sans } from 'next/font/google';
+
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { ToastContainer, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const josefinSans = Josefin_Sans({
    subsets: ['latin'],
@@ -26,6 +29,19 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <Footer />
+            <ToastContainer
+               position="top-center"
+               autoClose={1000}
+               hideProgressBar={false}
+               newestOnTop={false}
+               closeOnClick={false}
+               rtl={false}
+               pauseOnFocusLoss
+               draggable
+               pauseOnHover
+               theme="light"
+               transition={Bounce}
+            />
          </body>
       </html>
    );

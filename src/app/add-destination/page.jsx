@@ -10,8 +10,11 @@ import {
    TextArea,
    TextField,
 } from '@heroui/react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const AddDestination = () => {
+   const router = useRouter();
    const onSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData(event.target);
@@ -26,6 +29,13 @@ const AddDestination = () => {
             body: JSON.stringify(data),
          });
          const result = await res.json();
+         if (result.insertedId) {
+            toast.success('Destination added successfully');
+            event.target.reset();
+            router.refresh();
+         } else {
+            toast.error('Failed to add destination');
+         }
       } catch (error) {
          console.error('Failed to add destination:', error);
       }
