@@ -42,7 +42,7 @@ const AddDestination = () => {
    };
 
    return (
-      <div className="w-full md:w-9/12 mx-auto my-10 px-4">
+      <div className="w-full md:w-9/12 mx-auto my-10 px-4 ">
          <h1 className="mb-6 text-2xl font-bold text-center md:text-left">Add New Destinations</h1>
 
          <div className="w-full md:w-7/12 mx-auto rounded-md border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
