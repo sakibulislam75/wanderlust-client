@@ -1,3 +1,4 @@
+import { DeleteAlert } from '@/components/DeleteAlert';
 import { EditModal } from '@/components/EditModal';
 import { SingleDestinationsData } from '@/lib/Data';
 import { Button } from '@heroui/react';
@@ -35,15 +36,7 @@ const DestinationDetails = async ({ params }) => {
 
             <div className="flex flex-wrap md: items-center gap-2">
                <EditModal destination={destination} />
-
-               <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-none border-red-300 px-4 text-sm text-red-500"
-               >
-                  <MdDeleteOutline />
-                  Cancel
-               </Button>
+               <DeleteAlert destination={destination} />
             </div>
          </div>
 
