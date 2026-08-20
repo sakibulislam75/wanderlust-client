@@ -24,7 +24,7 @@ const Navbar = () => {
             </li>
 
             <li>
-               <NavLink href="/bookings">My Bookings</NavLink>
+               <NavLink href="/my-bookings">My Bookings</NavLink>
             </li>
 
             <li>

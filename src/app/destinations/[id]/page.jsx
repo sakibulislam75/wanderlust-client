@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { BiSolidEdit } from 'react-icons/bi';
 import { FaArrowLeft, FaCheck, FaEdit, FaMapMarkerAlt, FaStar, FaTrash } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
-import Datefield from '@/components/DateField';
+import BookingCard from '@/components/BookingCard';
 
 const DestinationDetails = async ({ params }) => {
    const { id } = await params;
@@ -108,37 +108,7 @@ const DestinationDetails = async ({ params }) => {
 
             {/* Booking Card */}
 
-            <div>
-               <div className="sticky top-6 rounded-2xl border bg-white p-6 shadow-lg">
-                  <p className="text-sm text-gray-500">Starting from</p>
-
-                  <h2 className="text-4xl font-bold text-cyan-500">${destination.price}</h2>
-
-                  <p className="mb-5 text-sm text-gray-500">per person</p>
-                  <Datefield></Datefield>
-
-                  <Button color="primary" className="mt-4 w-full">
-                     Book Now →
-                  </Button>
-
-                  <div className="mt-6 space-y-3 border-t pt-5 text-sm text-gray-600">
-                     <p className="flex items-center gap-2">
-                        <FaCheck className="text-green-500" size={12} />
-                        Free cancellation up to 7 days
-                     </p>
-
-                     <p className="flex items-center gap-2">
-                        <FaCheck className="text-green-500" size={12} />
-                        Travel insurance included
-                     </p>
-
-                     <p className="flex items-center gap-2">
-                        <FaCheck className="text-green-500" size={12} />
-                        24/7 customer support
-                     </p>
-                  </div>
-               </div>
-            </div>
+            <BookingCard destination={destination} />
          </div>
       </div>
    );
