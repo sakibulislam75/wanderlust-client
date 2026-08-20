@@ -3,10 +3,10 @@ import { EditModal } from '@/components/EditModal';
 import { SingleDestinationsData } from '@/lib/Data';
 import { Button } from '@heroui/react';
 import Link from 'next/link';
-import React from 'react';
 import { BiSolidEdit } from 'react-icons/bi';
 import { FaArrowLeft, FaCheck, FaEdit, FaMapMarkerAlt, FaStar, FaTrash } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
+import Datefield from '@/components/DateField';
 
 const DestinationDetails = async ({ params }) => {
    const { id } = await params;
@@ -115,12 +115,7 @@ const DestinationDetails = async ({ params }) => {
                   <h2 className="text-4xl font-bold text-cyan-500">${destination.price}</h2>
 
                   <p className="mb-5 text-sm text-gray-500">per person</p>
-
-                  <input
-                     type="date"
-                     defaultValue={destination.departureDate}
-                     className="w-full rounded-lg border p-3 outline-none"
-                  />
+                  <Datefield></Datefield>
 
                   <Button color="primary" className="mt-4 w-full">
                      Book Now →
