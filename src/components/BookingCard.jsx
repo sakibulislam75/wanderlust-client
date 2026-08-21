@@ -36,9 +36,9 @@ const BookingCard = ({ destination }) => {
          });
          const result = await res.json();
          if (result.insertedId) {
-            toast.success('Destination added successfully');
+            toast.success('Booking complete successfully');
          } else {
-            toast.error('Failed to add destination');
+            toast.error('Failed to complete booking');
          }
       } catch (error) {
          throw new Error('Failed to add destination:', error);

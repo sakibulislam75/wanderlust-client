@@ -1,6 +1,7 @@
 import { AllBookings } from '@/lib/Data';
 import { Button, Card } from '@heroui/react';
 import { Calendar, CircleCheck, Eye, Location, Receipt, TrashBin } from '@gravity-ui/icons';
+import { DeleteBookingAlert } from '@/components/DeleteBookingAlert';
 
 const MyBookings = async () => {
    const allBookings = await AllBookings();
@@ -60,22 +61,15 @@ const MyBookings = async () => {
 
                      {/* Actions */}
                      <div className="flex justify-end gap-2">
-                        <Button
-                           size="sm"
-                           variant="outline"
-                           className="h-7 rounded-none border-red-300 px-3 text-xs text-red-500"
-                        >
-                           <TrashBin className="size-3.5" />
-                           Cancel
-                        </Button>
+                        <DeleteBookingAlert destination={booking} />
 
-                        <Button
+                        {/* <Button
                            size="sm"
                            className="h-7 rounded-none bg-cyan-600 px-3 text-xs text-white"
                         >
                            <Eye className="size-3.5" />
                            View
-                        </Button>
+                        </Button> */}
                      </div>
                   </div>
                </Card>
