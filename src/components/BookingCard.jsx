@@ -1,7 +1,7 @@
 'use client';
 import { authClient } from '@/lib/auth-client';
 import { Button, DateField, Label } from '@heroui/react';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
@@ -10,6 +10,11 @@ const BookingCard = ({ destination }) => {
    const [departureDate, setDepartureDate] = useState(null);
    const { data: session, isPending } = authClient.useSession();
    const user = session?.user;
+   if (!session) {
+      window.location.assign('/'); // logout হলে home এ redirect
+      return null; //stop rerender
+   }
+
    console.log(user, destination);
    console.log(new Date(departureDate));
    const handleBooking = async () => {
