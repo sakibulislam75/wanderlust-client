@@ -3,6 +3,7 @@ import Image from 'next/image';
 import FeatureDestination from '@/components/FeatureDestination';
 import WhyChooseWanderlust from '@/components/WhyChooseWanderlust';
 import Review from '@/components/Review';
+import ReadySection from '@/components/ReadySection';
 
 export default function Home() {
    return (
@@ -11,6 +12,7 @@ export default function Home() {
          <FeatureDestination />
          <WhyChooseWanderlust />
          <Review />
+         <ReadySection />
       </div>
    );
 }

@@ -3,11 +3,11 @@ import Image from 'next/image';
 
 export default function Review() {
    return (
-      <section className="w-11/12 mx-auto my-12">
+      <section className="w-11/12 mx-auto mt-12">
          <h2 className="text-3xl font-bold text-left pb-1 ">What Travelers Say</h2>
          <p className="text-left text-gray-600 mb-8">Real experiences from our happy travelers</p>
 
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Testimonial 1 */}
             <div className="bg-white border broder-gray-200 shadow-md rounded-md p-6 flex flex-col md:flex-row items-center gap-6 transition-transform duration-300 ease-in-out hover:scale-102 hover:shadow-lg ">
                <div className="flex-1">
