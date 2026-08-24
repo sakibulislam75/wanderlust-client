@@ -1,5 +1,6 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import { TrashBin } from '@gravity-ui/icons';
 import { AlertDialog, Button } from '@heroui/react';
 import { redirect, useRouter } from 'next/navigation';
@@ -10,9 +11,13 @@ export function DeleteBookingAlert({ destination }) {
    const router = useRouter();
    const { _id, destinationName } = destination;
    const handleDelete = async () => {
+      const { data } = await authClient.token();
       try {
          const res = await fetch(`http://localhost:5000/booking/${_id}`, {
             method: 'DELETE',
+            headers: {
+               Authorization: `Bearer ${data?.token}`,
+            },
          });
          const result = await res.json();
          if (result.deletedCount > 0) {
