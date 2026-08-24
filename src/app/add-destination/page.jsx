@@ -1,5 +1,6 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import {
    Button,
    FieldError,
@@ -19,12 +20,13 @@ const AddDestination = () => {
       event.preventDefault();
       const formData = new FormData(event.target);
       const data = Object.fromEntries(formData);
-      console.log(data);
+      const { data: tokenData } = await authClient.token();
       try {
          const res = await fetch('http://localhost:5000/destination', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
+               Authorization: `Bearer ${tokenData?.token}`,
             },
             body: JSON.stringify(data),
          });
