@@ -10,9 +10,13 @@ export const AllDestinations = async () => {
    }
 };
 
-export const SingleDestinationsData = async (id) => {
+export const SingleDestinationsData = async (id, token) => {
    try {
-      const res = await fetch(`http://localhost:5000/destination/${id}`);
+      const res = await fetch(`http://localhost:5000/destination/${id}`, {
+         headers: {
+            Authorization: `Bearer ${token}`,
+         },
+      });
       const data = await res.json();
       return data;
    } catch (error) {

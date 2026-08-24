@@ -14,7 +14,6 @@ const BookingCard = ({ destination }) => {
       window.location.assign('/'); // logout হলে home এ redirect
       return null; //stop rerender
    }
-
    console.log(user, destination);
    console.log(new Date(departureDate));
    const handleBooking = async () => {
@@ -31,11 +30,14 @@ const BookingCard = ({ destination }) => {
          //  category: destination.category,
          //  departureDate: new Date(departureDate),
       };
+      //client side
+      const { data } = await authClient.token();
       try {
          const res = await fetch('http://localhost:5000/booking', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
+               Authorization: `Bearer ${data?.token}`,
             },
             body: JSON.stringify(bookingDetails),
          });
@@ -46,7 +48,7 @@ const BookingCard = ({ destination }) => {
             toast.error('Failed to complete booking');
          }
       } catch (error) {
-         throw new Error('Failed to add destination:', error);
+         toast.error('Failed to complete booking');
       }
    };
 

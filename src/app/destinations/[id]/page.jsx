@@ -7,10 +7,17 @@ import { BiSolidEdit } from 'react-icons/bi';
 import { FaArrowLeft, FaCheck, FaEdit, FaMapMarkerAlt, FaStar, FaTrash } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
 import BookingCard from '@/components/BookingCard';
+import { authClient } from '@/lib/auth-client';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const DestinationDetails = async ({ params }) => {
    const { id } = await params;
-   const destination = await SingleDestinationsData(id);
+   //server side
+   const { token } = await auth.api.getToken({
+      headers: await headers(),
+   });
+   const destination = await SingleDestinationsData(id, token);
 
    const highlights = [
       'Luxury accommodation',
