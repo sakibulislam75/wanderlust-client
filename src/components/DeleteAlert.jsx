@@ -1,5 +1,6 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import { AlertDialog, Button } from '@heroui/react';
 import { redirect, useRouter } from 'next/navigation';
 import { MdDeleteOutline } from 'react-icons/md';
@@ -9,9 +10,13 @@ export function DeleteAlert({ destination }) {
    const router = useRouter();
    const { _id, destinationName } = destination;
    const handleDelete = async () => {
+      const { data } = await authClient.token();
       try {
          const res = await fetch(`http://localhost:5000/destination/${_id}`, {
             method: 'DELETE',
+            headers: {
+               Authorization: `Bearer ${data?.token}`,
+            },
          });
          if (res.ok) {
             router.push('/destinations');
