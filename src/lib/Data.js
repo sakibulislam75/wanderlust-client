@@ -1,8 +1,6 @@
 export const AllDestinations = async () => {
    try {
-      const res = await fetch('http://localhost:5000/destination', {
-         cache: 'no-cache',
-      });
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`);
       const data = await res.json();
       return data;
    } catch (error) {
@@ -12,7 +10,7 @@ export const AllDestinations = async () => {
 
 export const SingleDestinationsData = async (id, token) => {
    try {
-      const res = await fetch(`http://localhost:5000/destination/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
          headers: {
             Authorization: `Bearer ${token}`,
          },
@@ -24,10 +22,12 @@ export const SingleDestinationsData = async (id, token) => {
    }
 };
 
-export const AllBookings = async () => {
+export const AllBookings = async (token) => {
    try {
-      const res = await fetch('http://localhost:5000/booking', {
-         cache: 'no-cache',
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
+         headers: {
+            Authorization: `Bearer ${token}`,
+         },
       });
       const data = await res.json();
       return data;
