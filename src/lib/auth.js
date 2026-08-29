@@ -8,6 +8,7 @@ const db = client.db('wanderlust');
 
 export const auth = betterAuth({
    baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+   trustedOrigins: ['https://wanderlust-client-theta.vercel.app'],
    emailAndPassword: {
       enabled: true,
    },
