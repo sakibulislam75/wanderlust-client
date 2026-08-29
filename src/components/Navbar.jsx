@@ -38,7 +38,7 @@ const Navbar = () => {
 
          {/* Center */}
          <div className="order-1 md:order-2">
-            <Image src="/assets/wanderlast.png" alt="Logo" width={130} height={60} />
+            <Image src="/assets/Wanderlast.png" alt="Logo" width={130} height={60} />
          </div>
 
          {/* Right */}
