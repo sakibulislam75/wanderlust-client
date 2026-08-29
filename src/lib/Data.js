@@ -1,6 +1,6 @@
 export const AllDestinations = async () => {
    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`);
+      const res = await fetch(`${process.env.SERVER_URL}/destination`);
       const data = await res.json();
       return data;
    } catch (error) {
@@ -10,7 +10,7 @@ export const AllDestinations = async () => {
 
 export const SingleDestinationsData = async (id, token) => {
    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
+      const res = await fetch(`${process.env.SERVER_URL}/destination/${id}`, {
          headers: {
             Authorization: `Bearer ${token}`,
          },
@@ -24,7 +24,7 @@ export const SingleDestinationsData = async (id, token) => {
 
 export const AllBookings = async (token) => {
    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
+      const res = await fetch(`${process.env.SERVER_URL}/booking`, {
          headers: {
             Authorization: `Bearer ${token}`,
          },
