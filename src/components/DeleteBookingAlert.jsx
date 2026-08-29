@@ -13,7 +13,7 @@ export function DeleteBookingAlert({ destination }) {
    const handleDelete = async () => {
       const { data } = await authClient.token();
       try {
-         const res = await fetch(`${process.env.SERVER_URL}/booking/${_id}`, {
+         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${_id}`, {
             method: 'DELETE',
             headers: {
                Authorization: `Bearer ${data?.token}`,

@@ -22,7 +22,7 @@ const AddDestination = () => {
       const data = Object.fromEntries(formData);
       const { data: tokenData } = await authClient.token();
       try {
-         const res = await fetch(`${process.env.SERVER_URL}/destination`, {
+         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
