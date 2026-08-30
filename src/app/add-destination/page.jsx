@@ -33,7 +33,6 @@ const AddDestination = () => {
          const result = await res.json();
          if (result.insertedId) {
             toast.success('Destination added successfully');
-            mutate();
             event.target.reset();
             router.refresh();
          } else {

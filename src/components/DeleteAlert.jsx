@@ -19,15 +19,15 @@ export function DeleteAlert({ destination }) {
             },
          });
          if (res.ok) {
-            if (res.ok) {
-               toast.success(`${destinationName} deleted successfully!`);
-               router.push('/destinations');
-            }
+            toast.success(`${destinationName} deleted successfully!`);
+            router.refresh();
+            router.push('/destinations');
          } else {
             toast.error('Failed to delete');
          }
       } catch (error) {
-         throw new Error(error);
+         toast.error('Something went wrong while deleting');
+         console.error(error);
       }
    };
 
