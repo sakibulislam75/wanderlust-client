@@ -1,6 +1,8 @@
 export const AllDestinations = async () => {
    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
+         cache: 'no-store',
+      });
       const data = await res.json();
       return data;
    } catch (error) {
@@ -11,6 +13,7 @@ export const AllDestinations = async () => {
 export const SingleDestinationsData = async (id, token) => {
    try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
+         cache: 'no-store',
          headers: {
             Authorization: `Bearer ${token}`,
          },
@@ -25,6 +28,7 @@ export const SingleDestinationsData = async (id, token) => {
 export const AllBookings = async (token) => {
    try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
+         cache: 'no-store',
          headers: {
             Authorization: `Bearer ${token}`,
          },
