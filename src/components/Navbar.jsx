@@ -27,9 +27,9 @@ const Navbar = () => {
                <NavLink href="/my-bookings">My Bookings</NavLink>
             </li>
 
-            <li>
+            {/* <li>
                <NavLink href="/admin">Admin</NavLink>
-            </li>
+            </li> */}
 
             <li>
                <NavLink href="/add-destination">Add Destination</NavLink>
