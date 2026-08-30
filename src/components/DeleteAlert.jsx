@@ -19,8 +19,10 @@ export function DeleteAlert({ destination }) {
             },
          });
          if (res.ok) {
-            router.push('/destinations');
-            toast.success(`${destinationName} deleted successfully!`);
+            if (res.ok) {
+               toast.success(`${destinationName} deleted successfully!`);
+               router.push('/destinations');
+            }
          } else {
             toast.error('Failed to delete');
          }
